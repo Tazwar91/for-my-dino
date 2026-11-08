@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Dino ❤️🦖</title>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255, 143, 177, .35), transparent 25%),
+      radial-gradient(circle at 85% 75%, rgba(255, 194, 210, .25), transparent 25%),
+      linear-gradient(135deg, #2a0716, #63102f 50%, #250611);
+  }
+
+  .hearts { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .heart {
+    position: absolute; bottom: -40px; opacity: .7;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    to { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+  }
+
+  section {
+    min-height: 100vh;
+    padding: 32px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card {
+    width: min(760px, 100%);
+    text-align: center;
+    padding: clamp(28px, 7vw, 70px);
+    border: 1px solid rgba(255,255,255,.22);
+    background: rgba(255,255,255,.09);
+    backdrop-filter: blur(14px);
+    border-radius: 30px;
+    box-shadow: 0 25px 70px rgba(0,0,0,.35);
+  }
+
+  .dino { font-size: clamp(64px, 12vw, 110px); animation: bounce 2s ease-in-out infinite; }
+  @keyframes bounce { 50% { transform: translateY(-12px) rotate(-4deg); } }
+
+  h1 { font-size: clamp(2.4rem, 8vw, 5rem); margin: 10px 0; }
+  h2 { font-size: clamp(1.8rem, 6vw, 3.2rem); margin: 0 0 18px; }
+  p { font-size: clamp(1rem, 3.8vw, 1.25rem); line-height: 1.75; color: #ffe7ef; }
+  .pink { color: #ff9fbd; }
+
+  button {
+    border: 0;
+    padding: 16px 25px;
+    margin-top: 18px;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #5b0c29;
+    background: linear-gradient(135deg, #ffd0df, #ff83ad);
+    box-shadow: 0 10px 25px rgba(255, 92, 145, .28);
+    transition: .25s ease;
+  }
+  button:hover, button:active { transform: scale(1.06); }
+
+  .hidden { display: none; }
+
+  .compliment-box {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    border-radius: 24px;
+    background: rgba(255,255,255,.08);
+    margin: 20px 0;
+  }
+  #compliment {
+    font-size: clamp(1.35rem, 5vw, 2rem);
+    font-weight: bold;
+    line-height: 1.5;
+    animation: fade .5s ease;
+  }
+  @keyframes fade { from { opacity: 0; transform: translateY(12px); } }
+
+  .photo-wrap {
+    width: min(430px, 100%);
+    margin: 28px auto;
+    position: relative;
+  }
+  .photo-wrap::before {
+    content: "❤️";
+    position: absolute;
+    font-size: 42px;
+    top: -20px;
+    right: -10px;
+    z-index: 2;
+    animation: bounce 1.8s infinite;
+  }
+  .photo {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 28px;
+    border: 5px solid rgba(255,255,255,.72);
+    box-shadow: 0 20px 50px rgba(0,0,0,.45);
+  }
+
+  .final { background: rgba(255, 143, 177, .08); }
+  .big-heart { font-size: 90px; animation: pulse 1.4s infinite; }
+  @keyframes pulse { 50% { transform: scale(1.15); } }
+
+  .signature {
+    margin-top: 28px;
+    font-style: italic;
+    color: #ffb6cd;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 18px 12px; }
+    .card { border-radius: 24px; padding: 30px 20px; }
+    button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<section id="home">
+  <div class="card">
+    <div class="dino">🦖💕</div>
+    <h1>Hey, <span class="pink">Zerin Subha</span>...</h1>
+    <p>I made something small for someone who somehow became a very big part of my thoughts.</p>
+    <p><b>My favourite Dino. 🦖❤️</b></p>
+    <button onclick="document.getElementById('compliments').scrollIntoView()">Open Your Surprise 💌</button>
+  </div>
+</section>
+
+<section id="compliments">
+  <div class="card">
+    <div class="dino">🦖✨</div>
+    <h2>A few things about <span class="pink">my Dino</span>...</h2>
+
+    <div class="compliment-box">
+      <div id="compliment">You're what the colour pink would look like if it were a person. 🌸</div>
+    </div>
+
+    <button onclick="nextCompliment()">One More 💕</button>
+    <br>
+    <button onclick="document.getElementById('memory').scrollIntoView()">See Our Little Memory 📸</button>
+  </div>
+</section>
+
+<section id="memory">
+  <div class="card">
+    <h2>One of my favourite pictures ❤️</h2>
+
+    <div class="photo-wrap">
+      <img class="photo" src="photo.jpg" alt="A special memory together">
+    </div>
+
+    <p>
+      Out of all the pictures in the world, this one feels a little more special to me.
+      <br><br>
+      Maybe because <span class="pink">you're in it.</span> 🥹❤️
+    </p>
+
+    <button onclick="document.getElementById('final').scrollIntoView()">One Last Thing... 🥹</button>
+  </div>
+</section>
+
+<section id="final">
+  <div class="card final">
+    <div class="big-heart">❤️</div>
+    <h2>My beautiful Dino...</h2>
+
+    <p>
+      No matter how many times I compliment you, I don't think I'll ever get tired of reminding you how beautiful and special you are to me.
+    </p>
+
+    <p>
+      You make ordinary moments feel a little more special, and somehow you manage to make me want to spoil you even more. 🥹💕
+    </p>
+
+    <h2 class="pink">So yes...</h2>
+    <p><b>I love spoiling my Dino. 🦖❤️</b></p>
+    <p class="signature">Made with a lot of affection, just for you. 💌</p>
+
+    <button onclick="celebrate()">Click for some extra love ❤️</button>
+    <div id="extraLove" class="hidden">
+      <p style="font-size:1.6rem; margin-top:25px;">You are stuck with all my compliments now. 😌💕🦖</p>
+    </div>
+  </div>
+</section>
+
+<script>
+const compliments = [
+  "You're what the colour pink would look like if it were a person. 🌸",
+  "My Dino might be dangerous, but she's also the cutest person I know. 🦖💕",
+  "I don't think you'll ever understand how beautiful you look through my eyes. 🥹❤️",
+  "You make even ordinary moments feel special. ✨",
+  "Some people are pretty. Then there's you, making the word pretty feel a little incomplete. ❤️",
+  "And no matter how many times I compliment you, I'll never get tired of it. 💌"
+];
+
+let index = 0;
+function nextCompliment() {
+  index = (index + 1) % compliments.length;
+  const el = document.getElementById("compliment");
+  el.style.animation = "none";
+  requestAnimationFrame(() => {
+    el.style.animation = "";
+    el.textContent = compliments[index];
+  });
+}
+
+function celebrate() {
+  document.getElementById("extraLove").classList.remove("hidden");
+  for (let i = 0; i < 35; i++) createHeart(true);
+}
+
+function createHeart(randomFast = false) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = ["❤️","💕","💗","💖","🩷"][Math.floor(Math.random()*5)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (16 + Math.random() * 26) + "px";
+  heart.style.animationDuration = (randomFast ? 2 + Math.random()*3 : 6 + Math.random()*7) + "s";
+  document.getElementById("hearts").appendChild(heart);
+  setTimeout(() => heart.remove(), 14000);
+}
+
+for (let i = 0; i < 14; i++) {
+  setTimeout(createHeart, i * 450);
+}
+setInterval(createHeart, 900);
+</script>
+</body>
+</html>
